@@ -50,7 +50,7 @@ def run_bot():
                                                                                                       client.loop))
         except Exception:
             print(Exception)
-
+    #очищает очередь
     @client.command(name="clear_queue")
     async def clear_queue(ctx):
         if ctx.guild.id in queues:
@@ -58,21 +58,21 @@ def run_bot():
             await ctx.send("Очередь очищена")
         else:
             await ctx.send("Очереди нет")
-
+    #останавливает играющую музыку
     @client.command(name="pause")
     async def pause(ctx):
         try:
             voice_clients[ctx.guild.id].pause()
         except Exception:
             print(Exception)
-
+    #воспроизводит остановленную музыку заново
     @client.command(name="resume")
     async def resume(ctx):
         try:
             voice_clients[ctx.guild.id].resume()
         except Exception:
             print(Exception)
-
+    #заканчивает работу бота
     @client.command(name="stop")
     async def stop(ctx):
         try:
@@ -81,7 +81,7 @@ def run_bot():
             del voice_clients[ctx.guild.id]
         except Exception:
             print(Exception)
-
+    #пропускает музыку на следующую
     @client.command(name="skip")
     async def skip(ctx):
         try:
@@ -90,7 +90,7 @@ def run_bot():
             await ctx.send("Трек пропущен")
         except Exception:
             print(Exception)
-
+    #создаёт очередь
     @client.command(name="queue")
     async def queue(ctx, url):
         if ctx.guild.id not in queues:
