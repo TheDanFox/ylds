@@ -20,9 +20,10 @@ def run_bot():
                       'options': '-vn -filter:a "volume=0.25"'}
 
     @client.event
+    #Бот подключился к серверу 
     async def on_ready():
         print(f'{client.user} подключен')
-
+    
     async def play_next(ctx):
         if queues[ctx.guild.id] != []:
             link = queues[ctx.guild.id].pop(0)
